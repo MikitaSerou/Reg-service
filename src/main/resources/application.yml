@@ -1,9 +1,14 @@
+spring:
+  application:
+    name: reg-service
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 60
+    hostname: ${HOSTNAME}
+    lease-renewal-interval-in-seconds: 30
   client:
     register-with-eureka: false
     fetch-registry: false
-
+    service-url:
+      defaultZone: http://${HOSTNAME}:${server.port}/eureka/
 server:
   port: ${PORT:8080}
